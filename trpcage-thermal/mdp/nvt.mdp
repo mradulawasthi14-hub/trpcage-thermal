@@ -1,0 +1,23 @@
+; NVT equilibration, 100 ps, protein position-restrained. @TEMP@ is filled in by run_all.sh
+define               = -DPOSRES
+integrator           = md
+dt                   = 0.002
+nsteps               = 50000
+constraints          = h-bonds
+constraint-algorithm = lincs
+cutoff-scheme        = Verlet
+nstlist              = 20
+coulombtype          = PME
+rcoulomb             = 1.0
+rvdw                 = 1.0
+tcoupl               = V-rescale
+tc-grps              = Protein Non-Protein
+tau_t                = 0.1 0.1
+ref_t                = @TEMP@ @TEMP@
+pcoupl               = no
+gen_vel              = yes
+gen_temp             = @TEMP@
+gen_seed             = -1
+nstenergy            = 500
+nstlog               = 500
+pbc                  = xyz
